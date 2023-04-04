@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 RANDOM_PATHS = ["evaluations/data/random_0_1.csv"]
 # "evaluations/data/random_0_2.csv",
@@ -308,6 +309,12 @@ def plot_pyzx_fast(show=False):
 
 
 def main(show=False):
+    plot_dirs = ["evaluations/plots/pyzx_fast", "evaluations/plots/reproduce",
+                 "evaluations/plots/maxcut", "evaluations/plots/random",
+                 "evaluations/plots/gauss_fast"]
+    for dir in plot_dirs:
+        if not os.path.isdir(dir):
+            os.mkdir(dir)
     plot_reproduce(show)
     plot_maxcut(show)
     plot_random_experiment(show=show)
